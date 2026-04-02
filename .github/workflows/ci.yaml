@@ -19,4 +19,12 @@ jobs:
         run: go test -v ./...
 
       - name: Build
-        run: go build -v ./...
+        run: CGO_ENABLED=0 go build -o kube-score ./cmd/kube-score
+
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        if: github.ref_type == 'tag'
+        with:
+          name: '${{ github.ref_name }}'
+          body: 'Release generated at commit: ${{ github.sha }}'
+          files: kube-score
