@@ -1,5 +1,7 @@
 module github.com/zegl/kube-score
 
+go 1.26.1
+
 require (
 	github.com/buildkite/terminal-to-html v3.2.0+incompatible
 	github.com/eidolon/wordwrap v0.0.0-20161011182207-e0f54129b8bb
@@ -39,5 +41,3 @@ require (
 	sigs.k8s.io/structured-merge-diff/v6 v6.3.0 // indirect
 	sigs.k8s.io/yaml v1.6.0 // indirect
 )
-
-go 1.25.0
