@@ -1,5 +1,7 @@
-project_name: kube-score
+# yaml-language-server: $schema=https://goreleaser.com/static/schema.json
 version: 2
+
+project_name: kube-score
 
 builds:
 - env:
@@ -11,11 +13,7 @@ builds:
   dir: cmd/kube-score
 
 archives:
-  - id: binary
-  - format_overrides:
-      - formats: ["zip"]
-    files:
-      - LICENSE
+  - format: binary
 
 checksum:
   name_template: 'checksums.txt'
