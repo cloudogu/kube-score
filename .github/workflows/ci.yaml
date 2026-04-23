@@ -1,30 +1,39 @@
-name: Test Go
-
-on: [push]
-
+name: CI
+on: [ push, pull_request ]
+permissions:
+  contents: write
 jobs:
-  build:
+
+  check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-
-      - name: Set up Go
-        uses: actions/setup-go@v6
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-go@v6
         with:
           go-version-file: 'go.mod'
+          check-latest: true
           cache: true
-          cache-dependency-path: 'go.sum'
+      - run: go test -v -vet='all' ./...
 
-      - name: Test
-        run: go test -v ./...
-
-      - name: Build
-        run: CGO_ENABLED=0 go build -o kube-score ./cmd/kube-score
-
-      - name: Release
-        uses: softprops/action-gh-release@v2
-        if: github.ref_type == 'tag'
+  release:
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v') == true
+    needs: check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
         with:
-          name: '${{ github.ref_name }}'
-          body: 'Release generated at commit: ${{ github.sha }}'
-          files: kube-score
+          fetch-depth: 0
+      - uses: actions/setup-go@v6
+        with:
+          go-version-file: 'go.mod'
+          check-latest: true
+          cache: true
+      - uses: goreleaser/goreleaser-action@v7
+        with:
+          distribution: goreleaser
+          version: "~> v2"
+          args: release --clean
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
