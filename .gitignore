@@ -5,3 +5,4 @@
 vendor
 coverage.txt
 node_modules
+/dist/
