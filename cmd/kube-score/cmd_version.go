@@ -11,4 +11,5 @@ var date = "N/A"
 
 func cmdVersion() {
 	fmt.Printf("kube-score version: %s, commit: %s, built: %s\n", version, commit, date)
+	fmt.Printf("this release was built from a fork: https://github.com/cloudogu/kube-score")
 }
