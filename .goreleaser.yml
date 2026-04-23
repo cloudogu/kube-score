@@ -12,7 +12,8 @@ builds:
 
 archives:
   - id: binary
-    format: binary
+  - format_overrides:
+      - formats: ["zip"]
     files:
       - LICENSE
 
