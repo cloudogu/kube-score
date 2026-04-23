@@ -1,13 +1,6 @@
 # kube-score
 
-<p align="center"><img src="https://user-images.githubusercontent.com/47952/56085330-6c0a2480-5e41-11e9-89ba-0cfddd7714a8.png" height="200"></p>
-
-[![Go Report Card](https://goreportcard.com/badge/github.com/zegl/kube-score?)](https://goreportcard.com/report/github.com/zegl/kube-score)
-[![Test Go](https://github.com/zegl/kube-score/actions/workflows/test.yaml/badge.svg)](https://github.com/zegl/kube-score/actions/workflows/test.yaml)
-[![Releases](https://img.shields.io/github/release-pre/zegl/kube-score.svg)](https://github.com/zegl/kube-score/releases)
-![GitHub stars](https://img.shields.io/github/stars/zegl/kube-score.svg?label=github%20stars)
-![Downloads](https://img.shields.io/github/downloads/zegl/kube-score/total.svg)
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/zegl/kube-score/blob/master/LICENSE)
+<p>This is a fork of <a href="https://github.com/zegl/kube-score">github.com/zegl/kube-score</a>! See <a href="./NOTICE.md">NOTICE.md</a> for details.</p>
 
 ---
 
